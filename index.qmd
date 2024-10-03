@@ -1,0 +1,61 @@
+---
+title: "Clase R"
+author: "Lenin Delgado"
+format: html
+editor_options: 
+  chunk_output_type: console
+---
+
+# Diseños experimentales
+
+## DCA
+
+Dosis de fertilización nitrogenada
+
+- 0
+- 50
+- 150
+
+
+Rep: 5
+
+`
+```{r}
+# Instalar y cargar el paquete Agricolae
+library(agricolae)
+
+# Definir los parámetros
+tratamientos <- c(0, 50, 100, 150)  # Concentraciones de fertilizantes
+n_tratamientos <- length(tratamientos)
+n_repeticiones <- 5
+
+# Crear el diseño
+set.seed(123)  # Para reproducibilidad
+dca <- design.rcbd(trt = tratamientos, r = n_repeticiones)
+
+# Ver el diseño
+print(dca)
+```
+
+FActor 1 ( dosis nitrogeno): 0,50,100,150
+Factor 2 (variedades de papa): canchan y peruanita
+Bloques 5
+
+```{r}
+dosis <- c(0,50,100,150)
+
+variedad <- c("canchan","peruanita")
+```
+
+```{r}
+library(agricolae)
+trt <- c(4,2) # factorial de 4 x 2
+outdesing <- design.ab(trt = trt, r=5) 
+
+str(outdesing)
+
+outdesing
+```
+
+
+
