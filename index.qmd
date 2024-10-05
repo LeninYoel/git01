@@ -56,6 +56,46 @@ str(outdesing)
 
 outdesing
 ```
+## importacion de datos
 
+```{r}
+library(readxl)
+fb <- read_excel("LA MOLINA 2014 POTATO WUE (FB).xlsx", 
+    sheet = "fb") 
+
+# View(LA_MOLINA_2014_POTATO_WUE_FB_)
+
+str(fb)
+
+```
+
+## modelo estadístico
+
+```{r}
+modelo <- aov(formula = lfa ~ bloque + riego + geno + riego*geno, data = fb)
+
+plot(modelo)
+anova(modelo) 
+
+
+```
+## comparacion de medias
+
+```{r}
+library(agricolae)
+ld <- agricolae::duncan.test(y= modelo, trt=c("riego", "geno"))
+
+
+ld
+str(ld)
+```
+
+## gráfico
+
+```{r}
+plot(ld)
+
+
+```
 
 
